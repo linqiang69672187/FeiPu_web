@@ -1,0 +1,444 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{CB45592C-55D7-4D75-BE5D-E16E6CFC759D}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Feipdianli</RootNamespace>
+    <AssemblyName>Feipdianli</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="log4net, Version=1.2.0.30714, Culture=neutral, PublicKeyToken=b32731d11ce58905">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\迅雷下载\log4net-2.0.8-bin-newkey\log4net-2.0.8\bin\net\4.5\release\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="bg.png" />
+    <Content Include="bin\DbComponent.dll" />
+    <Content Include="bin\DbComponent.pdb" />
+    <Content Include="bin\Feipdianli.dll" />
+    <Content Include="bin\Feipdianli.pdb" />
+    <Content Include="bin\log4net.dll" />
+    <Content Include="bin\log4net.pdb" />
+    <Content Include="build\examples\addlayer.html" />
+    <Content Include="build\examples\addlayer.js" />
+    <Content Include="build\examples\browserify\index.html" />
+    <Content Include="build\examples\browserify\index.js" />
+    <Content Include="build\examples\layerswitcher.css" />
+    <Content Include="build\examples\layerswitcher.html" />
+    <Content Include="build\examples\layerswitcher.js" />
+    <Content Include="build\examples\scroll.css" />
+    <Content Include="build\examples\scroll.html" />
+    <Content Include="build\examples\scroll.js" />
+    <Content Include="build\ol-debug.js" />
+    <Content Include="build\ol-deps.js" />
+    <Content Include="build\ol.js" />
+    <Content Include="build\ol3-layerswitcher.js" />
+    <Content Include="build\src\ol3-layerswitcher.css" />
+    <Content Include="build\src\ol3-layerswitcher.js" />
+    <Content Include="CommJS\jquery-3.2.0.js" />
+    <Content Include="css\login.css" />
+    <Content Include="css\map.css" />
+    <Content Include="css\merged-stylesheets.css" />
+    <Content Include="css\normalize.css" />
+    <Content Include="css\ol.css" />
+    <Content Include="css\ol3-layerswitcher.css" />
+    <Content Include="css\orgchartstyle1.css" />
+    <Content Include="Gendan.html" />
+    <Content Include="Entity.html" />
+    <Content Include="Global.asax" />
+    <Content Include="Handle\Service\GetGPS_ByBound.ashx" />
+    <Content Include="Handle\Service\Checklogin.ashx" />
+    <Content Include="Handle\Service\GetDevices.ashx" />
+    <Content Include="Handle\Service\GetPlatSessionID.ashx" />
+    <Content Include="font\loginform-icon.eot" />
+    <Content Include="font\loginform-icon.svg" />
+    <Content Include="font\loginform-icon.ttf" />
+    <Content Include="font\loginform-icon.woff" />
+    <Content Include="Handle\Service\Update_Device.ashx" />
+    <Content Include="Handle\Service\GetEntitys.ashx" />
+    <Content Include="Handle\Service\Del_Device.ashx" />
+    <Content Include="Handle\Service\Update_Entity.ashx" />
+    <Content Include="Handle\Service\Del_Entity.ashx" />
+    <Content Include="Handle\Service\Add_Entity.ashx" />
+    <Content Include="Handle\Service\GetUsers.ashx" />
+    <Content Include="Handle\Service\GetMangeEntitys.ashx" />
+    <Content Include="Handle\Service\GetEntitys_Jstree.ashx" />
+    <Content Include="Handle\Service\Uploadfile.ashx" />
+    <Content Include="Handle\Service\Update_User.ashx" />
+    <Content Include="Handle\Service\Del_User.ashx" />
+    <Content Include="Handle\Service\Add_User.ashx" />
+    <Content Include="Handle\Service\SendImg.ashx" />
+    <Content Include="Handle\Service\SaveAPPImg.ashx" />
+    <Content Include="Handle\Service\SetParameters.ashx" />
+    <Content Include="IMG\00bj2.png" />
+    <Content Include="IMG\1.png" />
+    <Content Include="IMG\logo.png" />
+    <Content Include="IMG\type\home_offline%402x.png" />
+    <Content Include="IMG\type\home_online%402x.png" />
+    <Content Include="IMG\type\home_sel%402x.png" />
+    <Content Include="IMG\type\phone_offline%402x.png" />
+    <Content Include="IMG\type\phone_online%402x.png" />
+    <Content Include="IMG\type\phone_sel%402x.png" />
+    <Content Include="Js\GeoLocation.js" />
+    <Content Include="log4net.config" />
+    <Content Include="Map.html" />
+    <Content Include="Ol\baidu.js" />
+    <Content Include="Ol\ComuPAD.js" />
+    <Content Include="Ol\loader.js" />
+    <Content Include="Ol\mark.js" />
+    <Content Include="Ol\resources\common.js" />
+    <Content Include="Ol\resources\layout.css" />
+    <Content Include="Ol\resources\logo-70x70.png" />
+    <Content Include="Ol\resources\map-background.jpg" />
+    <Content Include="Ol\resources\mapbox-streets-v6-style.js" />
+    <Content Include="Ol\resources\prism\prism.css" />
+    <Content Include="Ol\resources\prism\prism.min.js" />
+    <Content Include="Ol\resources\zeroclipboard\ZeroClipboard.Core.js" />
+    <Content Include="Ol\resources\zeroclipboard\ZeroClipboard.Core.min.js" />
+    <Content Include="Ol\resources\zeroclipboard\ZeroClipboard.js" />
+    <Content Include="Ol\resources\zeroclipboard\ZeroClipboard.min.js" />
+    <Content Include="Ol\resources\zeroclipboard\ZeroClipboard.swf" />
+    <Content Include="Ol\vertor.js" />
+    <Content Include="Ol\xyz-esri.html" />
+    <Content Include="Ol\xyz-esri.js" />
+    <Content Include="Static_Seed_Project\css\jsTree\32px.png" />
+    <Content Include="Static_Seed_Project\css\jsTree\39px.png" />
+    <Content Include="Static_Seed_Project\css\jsTree\40px.png" />
+    <Content Include="Static_Seed_Project\css\jsTree\style.css" />
+    <Content Include="Static_Seed_Project\css\jsTree\style.min.css" />
+    <Content Include="Static_Seed_Project\css\jsTree\throbber.gif" />
+    <Content Include="Static_Seed_Project\js\plugins\jstree\jstree.min.js" />
+    <Content Include="WebForm1.aspx" />
+    <Content Include="Handle\Service\Update_PWD.ashx" />
+    <Content Include="Handle\Service\Checkuser.ashx" />
+    <Content Include="bin\Feipdianli.dll.config" />
+    <Content Include="Ol\resources\zeroclipboard\ZeroClipboard.Core.min.map" />
+    <Content Include="Ol\resources\zeroclipboard\ZeroClipboard.min.map" />
+    <Content Include="build\examples\browserify\package.json" />
+    <Content Include="build\examples\browserify\README.md" />
+    <Content Include="Handle\Service\GetaMarksbyBound.ashx" />
+    <None Include="Properties\PublishProfiles\FEIPU.pubxml" />
+    <None Include="Service References\Getresouce\VmsSdkWebService.wsdl" />
+    <Content Include="index.html" />
+    <Content Include="Js\ComMethod.js" />
+    <Content Include="Js\Login.js" />
+    <Content Include="Login.html" />
+    <Content Include="Modal\Edit_PWD.html" />
+    <Content Include="prefixfree.min.js" />
+    <Content Include="Static_Seed_Project\css\bootstrap.css.map" />
+    <Content Include="Static_Seed_Project\css\bootstrap.min.css.map" />
+    <Content Include="Static_Seed_Project\css\Fileupload\Fileupload.css" />
+    <Content Include="Static_Seed_Project\css\select2\select2.min.css" />
+    <Content Include="Static_Seed_Project\font-awesome\fonts\fontawesome-webfont.eot" />
+    <Content Include="Static_Seed_Project\font-awesome\fonts\fontawesome-webfont.svg" />
+    <Content Include="Static_Seed_Project\font-awesome\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Static_Seed_Project\font-awesome\fonts\fontawesome-webfont.woff" />
+    <Content Include="Static_Seed_Project\font-awesome\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Static_Seed_Project\font-awesome\fonts\FontAwesome.otf" />
+    <Content Include="Static_Seed_Project\font-awesome\less\animated.less" />
+    <Content Include="Static_Seed_Project\font-awesome\less\bordered-pulled.less" />
+    <Content Include="Static_Seed_Project\font-awesome\less\core.less" />
+    <Content Include="Static_Seed_Project\font-awesome\less\fixed-width.less" />
+    <Content Include="Static_Seed_Project\font-awesome\less\font-awesome.less" />
+    <Content Include="Static_Seed_Project\font-awesome\less\icons.less" />
+    <Content Include="Static_Seed_Project\font-awesome\less\larger.less" />
+    <Content Include="Static_Seed_Project\font-awesome\less\list.less" />
+    <Content Include="Static_Seed_Project\font-awesome\less\mixins.less" />
+    <Content Include="Static_Seed_Project\font-awesome\less\path.less" />
+    <Content Include="Static_Seed_Project\font-awesome\less\rotated-flipped.less" />
+    <Content Include="Static_Seed_Project\font-awesome\less\screen-reader.less" />
+    <Content Include="Static_Seed_Project\font-awesome\less\stacked.less" />
+    <Content Include="Static_Seed_Project\font-awesome\less\variables.less" />
+    <Content Include="Static_Seed_Project\font-awesome\scss\font-awesome.scss" />
+    <Content Include="Static_Seed_Project\font-awesome\scss\_animated.scss" />
+    <Content Include="Static_Seed_Project\font-awesome\scss\_bordered-pulled.scss" />
+    <Content Include="Static_Seed_Project\font-awesome\scss\_core.scss" />
+    <Content Include="Static_Seed_Project\font-awesome\scss\_fixed-width.scss" />
+    <Content Include="Static_Seed_Project\font-awesome\scss\_icons.scss" />
+    <Content Include="Static_Seed_Project\font-awesome\scss\_larger.scss" />
+    <Content Include="Static_Seed_Project\font-awesome\scss\_list.scss" />
+    <Content Include="Static_Seed_Project\font-awesome\scss\_mixins.scss" />
+    <Content Include="Static_Seed_Project\font-awesome\scss\_path.scss" />
+    <Content Include="Static_Seed_Project\font-awesome\scss\_rotated-flipped.scss" />
+    <Content Include="Static_Seed_Project\font-awesome\scss\_screen-reader.scss" />
+    <Content Include="Static_Seed_Project\font-awesome\scss\_stacked.scss" />
+    <Content Include="Static_Seed_Project\font-awesome\scss\_variables.scss" />
+    <Content Include="Static_Seed_Project\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Static_Seed_Project\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Static_Seed_Project\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Static_Seed_Project\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Static_Seed_Project\fonts\glyphicons-halflings-regular.woff2" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\Getresouce\configuration91.svcinfo" />
+    <None Include="Service References\Getresouce\configuration.svcinfo" />
+    <None Include="Service References\Getresouce\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <Content Include="IMG\Loginbg.jpg" />
+    <Content Include="IMG\Logincanvas.png" />
+    <Content Include="IMG\LOGO.jpg" />
+    <Content Include="Static_Seed_Project\css\animate.css" />
+    <Content Include="Static_Seed_Project\css\bootstrap.css" />
+    <Content Include="Static_Seed_Project\css\bootstrap.min.css" />
+    <Content Include="Static_Seed_Project\css\patterns\1.png" />
+    <Content Include="Static_Seed_Project\css\patterns\2.png" />
+    <Content Include="Static_Seed_Project\css\patterns\3.png" />
+    <Content Include="Static_Seed_Project\css\patterns\4.png" />
+    <Content Include="Static_Seed_Project\css\patterns\5.png" />
+    <Content Include="Static_Seed_Project\css\patterns\6.png" />
+    <Content Include="Static_Seed_Project\css\patterns\7.png" />
+    <Content Include="Static_Seed_Project\css\patterns\congruent_pentagon.png" />
+    <Content Include="Static_Seed_Project\css\patterns\header-profile-skin-1.png" />
+    <Content Include="Static_Seed_Project\css\patterns\header-profile-skin-2.png" />
+    <Content Include="Static_Seed_Project\css\patterns\header-profile-skin-3.png" />
+    <Content Include="Static_Seed_Project\css\patterns\header-profile.jpg" />
+    <Content Include="Static_Seed_Project\css\patterns\header-profile.png" />
+    <Content Include="Static_Seed_Project\css\patterns\otis_redding.png" />
+    <Content Include="Static_Seed_Project\css\patterns\shattered.png" />
+    <Content Include="Static_Seed_Project\css\patterns\triangular.png" />
+    <Content Include="Static_Seed_Project\css\style.css" />
+    <Content Include="Static_Seed_Project\font-awesome\css\font-awesome.css" />
+    <Content Include="Static_Seed_Project\font-awesome\css\font-awesome.min.css" />
+    <Content Include="Static_Seed_Project\font-awesome\less\font-awesome.css" />
+    <Content Include="Static_Seed_Project\font-awesome\less\mixins.css" />
+    <Content Include="Static_Seed_Project\font-awesome\less\variables.css" />
+    <Content Include="Static_Seed_Project\font-awesome\scss\font-awesome.css" />
+    <Content Include="Static_Seed_Project\img\profile_small.jpg" />
+    <Content Include="Static_Seed_Project\index.html" />
+    <Content Include="Static_Seed_Project\js\bootstrap.js" />
+    <Content Include="Static_Seed_Project\js\bootstrap.min.js" />
+    <Content Include="Static_Seed_Project\js\handlebars.js" />
+    <Content Include="Static_Seed_Project\js\inspinia.js" />
+    <Content Include="Static_Seed_Project\js\jquery-3.1.1.min.js" />
+    <Content Include="Static_Seed_Project\js\plugins\dataTables\datatables.min.js" />
+    <Content Include="Static_Seed_Project\js\plugins\Fileupload\Fileupload.js" />
+    <Content Include="Static_Seed_Project\js\plugins\Fileupload\zh.js" />
+    <Content Include="Static_Seed_Project\js\plugins\metisMenu\jquery.metisMenu.js" />
+    <Content Include="Static_Seed_Project\js\plugins\pace\pace.min.js" />
+    <Content Include="Static_Seed_Project\js\plugins\select2\select2.full.min.js" />
+    <Content Include="Static_Seed_Project\js\plugins\slimscroll\jquery.slimscroll.js" />
+    <Content Include="Static_Seed_Project\js\plugins\slimscroll\jquery.slimscroll.min.js" />
+    <Content Include="Static_Seed_Project\minor.html" />
+    <Content Include="template\left.html" />
+    <Content Include="template\Top.html" />
+    <Content Include="TestGPS_GET.aspx" />
+    <Content Include="TestSendIMG.html" />
+    <Content Include="Test_Login.aspx" />
+    <Content Include="User.html" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CLASS\Static\Config.cs" />
+    <Compile Include="CommonClass\CheckuserReturnSQL.cs" />
+    <Compile Include="CommonClass\DriveDir.cs" />
+    <Compile Include="CommonClass\LogHelper.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Handle\Service\Add_Entity.ashx.cs">
+      <DependentUpon>Add_Entity.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Handle\Service\Add_User.ashx.cs">
+      <DependentUpon>Add_User.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Handle\Service\Checklogin.ashx.cs">
+      <DependentUpon>Checklogin.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Handle\Service\Checkuser.ashx.cs">
+      <DependentUpon>Checkuser.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Handle\Service\Del_Device.ashx.cs">
+      <DependentUpon>Del_Device.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Handle\Service\Del_Entity.ashx.cs">
+      <DependentUpon>Del_Entity.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Handle\Service\Del_User.ashx.cs">
+      <DependentUpon>Del_User.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Handle\Service\GetaMarksbyBound.ashx.cs">
+      <DependentUpon>GetaMarksbyBound.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Handle\Service\GetDevices.ashx.cs">
+      <DependentUpon>GetDevices.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Handle\Service\GetEntitys.ashx.cs">
+      <DependentUpon>GetEntitys.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Handle\Service\GetEntitys_Jstree.ashx.cs">
+      <DependentUpon>GetEntitys_Jstree.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Handle\Service\GetGPS_ByBound.ashx.cs">
+      <DependentUpon>GetGPS_ByBound.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Handle\Service\GetMangeEntitys.ashx.cs">
+      <DependentUpon>GetMangeEntitys.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Handle\Service\GetPlatSessionID.ashx.cs">
+      <DependentUpon>GetPlatSessionID.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Handle\Service\GetUsers.ashx.cs">
+      <DependentUpon>GetUsers.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Handle\Service\SaveAPPImg.ashx.cs">
+      <DependentUpon>SaveAPPImg.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Handle\Service\SendImg.ashx.cs">
+      <DependentUpon>SendImg.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Handle\Service\SetParameters.ashx.cs">
+      <DependentUpon>SetParameters.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Handle\Service\Update_Device.ashx.cs">
+      <DependentUpon>Update_Device.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Handle\Service\Update_Entity.ashx.cs">
+      <DependentUpon>Update_Entity.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Handle\Service\Update_PWD.ashx.cs">
+      <DependentUpon>Update_PWD.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Handle\Service\Update_User.ashx.cs">
+      <DependentUpon>Update_User.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Handle\Service\Uploadfile.ashx.cs">
+      <DependentUpon>Uploadfile.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service References\Getresouce\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="TestGPS_GET.aspx.cs">
+      <DependentUpon>TestGPS_GET.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TestGPS_GET.aspx.designer.cs">
+      <DependentUpon>TestGPS_GET.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Test_Login.aspx.cs">
+      <DependentUpon>Test_Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Test_Login.aspx.designer.cs">
+      <DependentUpon>Test_Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForm1.aspx.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForm1.aspx.designer.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DbComponent\DbComponent.csproj">
+      <Project>{15314c6f-dc0e-44af-95c5-df291e801bd2}</Project>
+      <Name>DbComponent</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\Getresouce\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Handle\Service\Upload\UserImg\" />
+    <Folder Include="Upload\Headimg\" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>4318</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:4318/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

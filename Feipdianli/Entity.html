@@ -1,0 +1,392 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>工程后台管理系统后台</title>
+
+    <link href="Static_Seed_Project/css/bootstrap.min.css" rel="stylesheet">
+    <link href="Static_Seed_Project/font-awesome/css/font-awesome.css" rel="stylesheet">
+
+    <link href="Static_Seed_Project/css/animate.css" rel="stylesheet">
+    <link href="Static_Seed_Project/css/style.css" rel="stylesheet">
+    <link href="css/login.css" rel="stylesheet" />
+
+</head>
+
+<body>
+
+    <div id="wrapper">
+
+        <nav id="LeftTemplate" class="navbar-default navbar-static-side" role="navigation">
+            <div class="sidebar-collapse">
+                <ul class="nav metismenu" id="side-menu">
+                    <li class="nav-header">
+                        <div class="dropdown profile-element">
+                            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                                <span class="clear">
+                                    <span class="block m-t-xs">
+                                        <strong class="font-bold">Admin</strong>
+                                    </span> <span class="text-muted text-xs block">管理员 <b class="caret"></b></span>
+                                </span>
+                            </a>
+                            <ul class="dropdown-menu animated fadeInRight m-t-xs">
+                                <li><a href="#">退出</a></li>
+                            </ul>
+                        </div>
+                        <div class="logo-element">
+                            IN+
+                        </div>
+                    </li>
+                    <li>
+                        <a href="index.html"><i class="fa fa-video-camera"></i> <span class="nav-label">设备管理</span></a>
+                    </li>
+                    <li class="active">
+                        <a href="Entity.html"><i class="fa fa-th-large"></i> <span class="nav-label">区域管理</span> </a>
+                    </li>
+                    <li>
+                        <a href="User.html"><i class="fa fa-user-circle"></i> <span class="nav-label">用户管理</span> </a>
+                    </li>
+                    <li>
+                        <a href="Gendan.html"><i class="fa fa-pencil"></i> <span class="nav-label">跟单系统</span> </a>
+                    </li>
+                </ul>
+
+            </div>
+ 
+        </nav>
+
+        <div id="page-wrapper" class="gray-bg">
+            <div id="TopTemplate" class="row border-bottom">
+
+            </div>
+            <div class="row wrapper border-bottom white-bg page-heading">
+                <div class="col-lg-10">
+
+                    <ol class="breadcrumb">
+
+                        <li class="active">
+                            当前位置： <font color="#11a3ee">区域管理</font>
+                        </li>
+                    </ol>
+                </div>
+                <div class="col-lg-2">
+
+                </div>
+            </div>
+
+            <div class="wrapper wrapper-content animated fadeInRight">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="ibox float-e-margins">
+
+                            <div class="ibox-content">
+
+                                <div >
+                                    <table id="example" class="table table-striped table-bordered table-hover dataTables-example">
+                                        <thead>
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>上级单位ID</th>
+                                                <th>单位名称</th>
+                                                <th>上级单位</th>
+                                                <th>操作</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody></tbody>
+                                        <!-- tbody是必须的 -->
+                                    </table>
+                                </div>
+
+
+                              
+
+                                <!-- Button trigger modal -->
+                                <!-- Modal -->
+                                <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                                <h4 class="modal-title" id="myModalLabel">新增</h4>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="form-group">
+                                                    <label id="mylodid"></label>
+                                                </div>
+                                           
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control" id="c_name">
+                                                </div>
+                                           
+                                                <div class="form-group">
+                                                    <select name="account" id="c_Entity" class="form-control m-b"></select>
+                                                </div>
+                                                
+
+                                            </div>
+                                            <div class="modal-footer">
+                                                <!--<button type="button" class="btn btn-info" id=" ">添加模拟数据</button>-->
+                                                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                                                <button type="button" class="btn btn-primary" id="save">保存</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer">
+
+                <div class="footcopy">
+    <strong>Copyright</strong>非普电力 &copy; 2017
+</div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Mainly scripts -->
+    <script src="Static_Seed_Project/js/jquery-3.1.1.min.js"></script>
+    <script src="Static_Seed_Project/js/bootstrap.min.js"></script>
+    <script src="Static_Seed_Project/js/plugins/metisMenu/jquery.metisMenu.js"></script>
+    <script src="Static_Seed_Project/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+    <script src="Static_Seed_Project/js/plugins/dataTables/datatables.min.js"></script>
+    <script src="Static_Seed_Project/js/handlebars.js"></script>
+    <!-- Custom and plugin javascript -->
+    <script src="Static_Seed_Project/js/inspinia.js"></script>
+    <script src="Static_Seed_Project/js/plugins/pace/pace.min.js"></script>
+    <script src="js/ComMethod.js"></script>
+    <!-- Page-Level Scripts -->
+    <!--定义操作列按钮模板-->
+    <script id="tpl" type="text/x-handlebars-template">
+        {{#each func}}
+        <button type="button" class="btn btn-{{this.type}} btn-sm" onclick="{{this.fn}}">{{this.name}}</button>
+        {{/each}}
+
+    </script>
+
+    <script>
+        
+        $("#TopTemplate").load("template/Top.html");
+        var table;
+        var editFlag = false;
+        $(function () {
+
+            var tpl = $("#tpl").html();
+            //预编译模板
+            var template = Handlebars.compile(tpl);
+
+            table = $('#example').DataTable({
+                ajax: {
+                    url: "Handle/Service/GetEntitys.ashx",
+                    dataSrc: 'result'
+                },
+                Paginate: true,
+                pageLength: 10,
+                serverSide: false,   //服务器处理
+                responsive: true,
+                paging: true,
+
+                columns: [
+                    { "data": "Id", visible: false },
+                    { "data": "ParentID", visible: false },
+                    { "data": "EntityName", visible: true },
+                    { "data": "ParentName" },   //   { "data": "c_name", "width": "80px" },
+                    { "data": null }
+                ],
+                columnDefs: [
+                    {
+                        targets: 4,
+                        render: function (a, b, c, d) {
+                            var context =
+                            {
+                                func: [
+                                    { "name": "修改", "fn": "edit(\'" + c.Id + "\',\'" + c.EntityName + "\',\'" + c.ParentName + "\',\'" + c.ParentID + "\')", "type": "primary" },
+                                    { "name": "删除", "fn": "del(\'" + c.Id + "\',\'" + c.EntityName + "\')", "type": "danger" }
+                                ]
+                            };
+                            var html = template(context);
+                            return html;
+                        }
+                    }
+
+                ],
+                "language": {
+                    "lengthMenu": "_MENU_每页",
+                    "zeroRecords": "没有找到记录",
+                    "info": "第 _PAGE_ 页 ( 总共 _PAGES_ 页 )",
+                    "infoEmpty": "无记录",
+                    "infoFiltered": "(从 _MAX_ 条记录过滤)",
+                    "search": "查找:",
+                    "paginate": {
+                        "previous": "上一页",
+                        "next": "下一页"
+                    }
+                },
+
+                dom: "<'row'<'col-xs-2'l><'#mytool.col-xs-4'><'col-xs-6'f>>" + "t" + "<'row'<'col-xs-6'i><'col-xs-6'p>>",
+
+                initComplete: function () {
+                      //$("#mytool").append('<button id="datainit" type="button" class="btn btn-primary btn-sm">增加区域数据</button>&nbsp');
+                     $("#mytool").append('<button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#myModal">添加</button>');
+                    // $("#datainit").on("click", initData);
+                }
+
+            });
+
+            $("#save").click(add);  //调用保存数据
+
+          // $("#initData").click(initSingleData);
+
+        });
+
+        $('#myModal').on('hide.bs.modal', function () {
+            clear();
+        })
+
+
+        /**
+         * 清除
+         */
+        function clear() {
+            $("#myModalLabel").text("新增");
+            $("#mylodid").text("");
+            $("#c_Entity").val("");
+            $("#c_name").val("");
+          
+            editFlag = false;
+        }
+
+        /**
+         * 添加及修改数据
+         **/
+        function add() {
+
+            
+
+            var addJson = {
+                "id": $("#mylodid").text(),
+                "ParentID": $("#c_Entity").val(),
+                "c_name": $("#c_name").val(),
+
+            };
+
+            ajax(addJson);
+        }
+
+        /**
+         *编辑方法
+         **/
+        function edit(id, EntityName, ParentName, ParentID) {
+            console.log(name);
+            editFlag = true;
+            $("#myModalLabel").text("修改");
+            $("#mylodid").text(id);
+            $("#mylodparentid").val(ParentID);
+            (ParentID == 0) ? $("#c_Entity").val(ParentID).attr("disabled", true) : $("#c_Entity").val(ParentID).attr("disabled", false) ;
+            $("#c_name").val(EntityName);
+         
+            $("#myModal").modal("show");
+        }
+
+        function ajax(obj) {
+            var url = "Handle/Service/Add_Entity.ashx";
+            if (editFlag) {
+                url = "Handle/Service/Update_Entity.ashx";
+            }
+            $.ajax({
+                url: url,
+
+                data: {
+                    "id": obj.id,
+                    "ParentID": obj.ParentID,
+                    "c_name": obj.c_name
+                   
+                }, success: function (data) {
+                    table.ajax.reload();
+                    $("#myModal").modal("hide");
+                    $("#myModalLabel").text("新增");
+                    clear();
+                    console.log("结果" + data);
+                    loadEntitylist();//重载单位列表
+                }
+            });
+        }
+
+
+        /**
+         * 删除数据
+         * @param ID，name
+         */
+        function del(id, name) {
+            if (!confirm("确定删除" + name + "?")) return;
+
+            $.ajax({
+                url: "/Handle/Service/Del_Entity.ashx",
+                data: {
+                    "id": id
+                }, success: function (data) {
+
+                    table.ajax.reload();
+                    loadEntitylist();//重载单位列表
+                    console.log("删除成功" + data);
+
+                }
+            });
+        }
+
+        /**
+     * 获取单位信息加载下拉列表
+     * @NAN
+     */
+        function loadEntitylist(){
+        $.ajax({
+            type: "POST",
+            url: "Handle/Service/GetEntitys.ashx",
+            data: "",
+            dataType: "json",
+            success: function (data) {
+                var fieldList = data.result;
+                if (fieldList != null && fieldList.length > 0) {
+
+                    var optionstring = "";
+                    for (var i = 0; i < fieldList.length; i++) {
+                        if (fieldList[i].ParentID=="0"){
+                        optionstring += "<option value=\"" + fieldList[i].Id + "\" >" + fieldList[i].EntityName + "</option>";
+                    }
+
+                    }
+                    $("#c_Entity").html("<option value='0' >一级单位</option> " + optionstring);
+                    $("#c_Entity").select[0] = true;
+                    //var end = "</select>";
+                    //$("str").appendTo("#selectL");
+                }
+            },
+            error: function (msg) {
+                alert("出错了！");
+            }
+        });
+      }
+        loadEntitylist();//重载单位列表
+        function gendanxitong(e) {
+
+
+        }
+    </script>
+
+
+
+
+</body>
+
+</html>

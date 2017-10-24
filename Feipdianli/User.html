@@ -1,0 +1,534 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>工程现场管理系统后台</title>
+
+    <link href="Static_Seed_Project/css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="Static_Seed_Project/font-awesome/css/font-awesome.css" rel="stylesheet">
+
+    <link href="Static_Seed_Project/css/animate.css" rel="stylesheet">
+
+    <link href="Static_Seed_Project/css/style.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="Static_Seed_Project/css/jsTree/style.css" />
+    <link href="Static_Seed_Project/css/Fileupload/Fileupload.css" rel="stylesheet" />
+    <link href="css/login.css" rel="stylesheet" />
+
+</head>
+
+
+<body>
+
+    <div id="wrapper">
+
+        <nav id="LeftTemplate" class="navbar-default navbar-static-side" role="navigation">
+            <div class="sidebar-collapse">
+                <ul class="nav metismenu" id="side-menu">
+                    <li class="nav-header">
+                        <div class="dropdown profile-element">
+                            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                                <span class="clear">
+                                    <span class="block m-t-xs">
+                                        <strong class="font-bold">Admin</strong>
+                                    </span> <span class="text-muted text-xs block">管理员 <b class="caret"></b></span>
+                                </span>
+                            </a>
+                            <ul class="dropdown-menu animated fadeInRight m-t-xs">
+                                <li><a href="Login.html">退出</a></li>
+                            </ul>
+                        </div>
+                        <div class="logo-element">
+                            IN+
+                        </div>
+                    </li>
+                    <li>
+                        <a href="index.html"><i class="fa fa-video-camera"></i> <span class="nav-label">设备管理</span></a>
+                    </li>
+                    <li>
+                        <a href="Entity.html"><i class="fa fa-th-large"></i> <span class="nav-label">区域管理</span> </a>
+                    </li>
+                    <li class="active">
+                        <a href="User.html"><i class="fa fa-user-circle"></i> <span class="nav-label">用户管理</span> </a>
+                    </li>
+                    <li>
+                        <a href="Gendan.html"><i class="fa fa-pencil"></i> <span class="nav-label">跟单系统</span> </a>
+                    </li>
+                </ul>
+
+            </div>
+
+        </nav>
+
+        <div id="page-wrapper" class="gray-bg">
+            <div id="TopTemplate" class="row border-bottom">
+
+            </div>
+            <div class="row wrapper border-bottom white-bg page-heading">
+                <div class="col-lg-10">
+
+                    <ol class="breadcrumb">
+
+                        <li class="active">
+                            当前位置： <font color="#11a3ee">用户管理</font>
+                        </li>
+                    </ol>
+                </div>
+                <div class="col-lg-2">
+
+                </div>
+            </div>
+
+            <div class="wrapper wrapper-content animated fadeInRight">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="ibox float-e-margins">
+
+                            <div class="ibox-content">
+
+                                <div >
+                                    <table id="example" class="table table-striped table-bordered table-hover dataTables-example">
+                                        <thead>
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>用户名</th>
+                                                <th>密码</th>
+                                                <th>区域权限</th>
+                                                <th>区域权限ID</th>
+                                                <th>头像</th>
+                                                <th>类型</th>
+                                                <th>操作</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody></tbody>
+                                        <!-- tbody是必须的 -->
+                                    </table>
+                                </div>
+                                <!-- Button trigger modal -->
+
+                                <!-- Modal -->
+                                <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                                <h4 class="modal-title" id="myModalLabel">新增</h4>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="form-group">
+                                                    <label id="mylodid"></label>
+                                                 
+                                                </div>
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control" id="username" placeholder="用户名">
+                                                </div>
+                                                <div class="form-group">
+                                                    <input type="password" class="form-control" id="pwd" minlength="5" placeholder="密码">
+                                                </div>
+                                                <div class="form-group"><label>权限分配</label>
+                                                    <div id="jstree_demo_div"></div>
+                                                    <label id="statictreevalue" style="display:none;"></label>
+                                                </div>
+                                                <div class="form-group">
+                                                    <select name="account" id="type"  class="form-control m-b">
+                                                        <option value="管理员">管理员</option>
+                                                        <option value="用户" selected="selected">用户</option>
+                                                    </select>
+                                                </div>
+                                                <div class="form-group" style="display:none;">
+                                                    <input id="file-2" name="uploadpic"  type="file" class="file"  data-show-upload="false">
+                                                    <label id="imgurl" style="display:none"></label>
+                                                   
+                                                </div>
+
+                                            </div>
+                                            <div class="modal-footer">
+                                                <!--<button type="button" class="btn btn-info" id=" ">添加模拟数据</button>-->
+                                                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                                                <button type="button" class="btn btn-primary" id="save">保存</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer">
+
+                <div class="footcopy">
+                    <strong>Copyright</strong>非普电力 &copy; 2017
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Mainly scripts -->
+    <script src="Static_Seed_Project/js/jquery-3.1.1.min.js"></script>
+    <script src="Static_Seed_Project/js/bootstrap.min.js"></script>
+    <script src="Static_Seed_Project/js/plugins/metisMenu/jquery.metisMenu.js"></script>
+    <script src="Static_Seed_Project/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+    <script src="Static_Seed_Project/js/plugins/dataTables/datatables.min.js"></script>
+    <script src="Static_Seed_Project/js/handlebars.js"></script>
+    <!-- Custom and plugin javascript -->
+    <script src="Static_Seed_Project/js/inspinia.js"></script>
+    <script src="Static_Seed_Project/js/plugins/pace/pace.min.js"></script>
+
+    <script src="Static_Seed_Project/js/plugins/jstree/jstree.min.js"></script>
+     
+    <script src="Static_Seed_Project/js/plugins/Fileupload/Fileupload.js"></script>
+    <script src="Static_Seed_Project/js/plugins/Fileupload/zh.js"></script>
+    <script src="js/ComMethod.js"></script>
+
+
+
+    <!-- Page-Level Scripts -->
+    <!--定义操作列按钮模板-->
+    <script id="tpl" type="text/x-handlebars-template">
+        {{#each func}}
+     
+        <button type="button" class="btn btn-{{this.type}} btn-sm" onclick="{{this.fn}}">{{this.name}}</button>
+     
+        {{/each}}
+    </script>
+
+    <script>
+     
+        $("#TopTemplate").load("template/Top.html");
+        var table;
+        var editFlag = false;
+        $(function () {
+
+            var tpl = $("#tpl").html();
+            //预编译模板
+            var template = Handlebars.compile(tpl);
+
+            table = $('#example').DataTable({
+                ajax: {
+                    url: "Handle/Service/GetUsers.ashx",
+                    dataSrc: 'result'
+                },
+                Paginate: true,
+                pageLength: 10,
+                serverSide: false,   //服务器处理
+                responsive: true,
+                paging: true,
+
+                columns: [
+                    { "data": "Id", visible: false },
+                    { "data": "username", visible: true },
+                    { "data": "pwd", visible: false },
+                    { "data": "Mange_Entitys" },
+                    { "data": "Mange_EntityIDs", visible: false },
+                 
+                    { "data": "Imgurl", visible: false },
+                    { "data": "type" },
+                    { "data": null }
+                ],
+                columnDefs: [
+                    {
+                        targets: 7,
+                        render: function (a, b, c, d) {
+                            if (c.type == "管理员") { return "<div> </div>";}
+                            var context =
+                            {
+                                func: [
+                                    { "name": "修改", "fn": "edit(\'" + c.Id + "\',\'" + c.username + "\',\'" + c.pwd + "\',\'" + c.Mange_EntityIDs + "\',\'" + c.type + "\',\'" + c.Imgurl + "\')", "type": "primary" },
+                                    { "name": "删除", "fn": "del(\'" + c.Id + "\',\'" + c.username + "\')", "type": "danger" }
+                                ]
+                            };
+                            var html = template(context);
+                            return html;
+                        }
+                    }
+
+                ],
+                "language": {
+                    "lengthMenu": "_MENU_每页",
+                    "zeroRecords": "没有找到记录",
+                    "info": "第 _PAGE_ 页 ( 总共 _PAGES_ 页 )",
+                    "infoEmpty": "无记录",
+                    "infoFiltered": "(从 _MAX_ 条记录过滤)",
+                    "search": "查找:",
+                    "paginate": {
+                        "previous": "上一页",
+                        "next": "下一页"
+                    }
+                },
+
+                dom: "<'row'<'col-xs-2'l><'#mytool.col-xs-4'><'col-xs-6'f>>" + "t" + "<'row'<'col-xs-6'i><'col-xs-6'p>>",
+
+                initComplete: function () {
+                    //$("#mytool").append('<button id="datainit" type="button" class="btn btn-primary btn-sm">增加区域数据</button>&nbsp');
+                    $("#mytool").append('<button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#myModal">添加</button>');
+                    // $("#datainit").on("click", initData);
+                }
+
+            });
+
+            $("#save").click(add);  //调用保存数据
+            clear();//初始化一下新增修改窗口
+
+        });
+
+      
+        //添加修改模态窗口隐藏后更换输入框状态
+        $('#myModal').on('hidden.bs.modal', function () {
+            $("#username").attr("disabled", false);
+      
+            $("#type").val(type).attr("disabled", false);
+            clear();
+            createtree(JSON.parse($("#statictreevalue").text()));
+        })
+
+
+
+        /**
+         * 清除
+         */
+        function clear() {
+      
+
+            $("#myModalLabel").text("新增");
+            $("#mylodid").text("");
+            $("#username").val("");
+            $("#pwd").val("");
+            //$('#jstree_demo_div').data('jstree', false).empty();
+            $("#Mange_EntityIDs").val("");
+            $("#type").val("用户").attr("disabled", true);
+          
+            $("#Imgurl").text("");
+
+
+            editFlag = false;
+        }
+
+        /**
+         * 添加及修改数据
+         **/
+        function add() {
+
+            var _username = $("#username").val();
+            var _password = $("#pwd").val();
+           
+            if (_password == "") {
+                createUserAlarm($("#pwd"), "密码不能为空");
+                return;
+            }
+            if (_username == "") {
+                createUserAlarm($("#username"), "用户名不能为空");
+                return;
+            }
+
+            $.ajax({
+                url: "Handle/Service/Checkuser.ashx",
+                dataType: "json",
+                data: {
+                    
+                    "username": _username,
+                    
+
+                }, success: function (data) {
+                    if (data.r != "0") {
+                        createUserAlarm($("#username"), data.result);
+                        return;
+                    }
+                    else {
+
+                        var ids = "";
+                        var nodes = $("#jstree_demo_div").jstree("get_checked"); //使用get_checked方法 
+                        $.each(nodes, function (i, n) {
+                            ids += "[" + n + "]";
+                        });
+                        //alert(ids);
+
+
+                        var addJson = {
+                            "Mange_EntityIDs": ids,
+                            "id": $("#mylodid").text(),
+                            "username": _username,
+                            "pwd": _password,
+                            "Imgurl": $("#imgurl").text(),
+                            "type": $("#type").val()
+
+                        };
+
+                        ajax(addJson);
+                    }
+                  
+                }
+            });
+
+            
+
+           
+        }
+
+        /**
+         *编辑方法
+         **/
+        function edit(mylodid, username, pwd, Mange_EntityIDs, type, Imgurl) {
+            $("#username").attr("disabled", true);
+            editFlag = true;
+            $("#myModalLabel").text("修改");
+            $("#mylodid").text(mylodid);
+            $("#username").val(username);
+            $("#pwd").val(pwd);
+            $("#Mange_EntityIDs").val(Mange_EntityIDs);
+            $("#type").val(type).attr("disabled",true);
+            $("#Imgurl").text(Imgurl);
+
+      
+           //选中树形中区域权限
+            for (var i = 0; i < datatree.length; i++) {
+                datatree[i].state = (Mange_EntityIDs.indexOf("[" + datatree[i].id + "]") > -1) ? { 'selected': true } : { 'selected': false };
+          
+            }
+
+            createtree(datatree);
+       
+
+
+            $("#myModal").modal("show");
+
+
+
+        }
+
+        function ajax(obj) {
+            if (obj.username == "") { return;}
+            var url = "Handle/Service/Add_User.ashx";
+            if (editFlag) {
+                url = "Handle/Service/Update_User.ashx";
+            }
+            $.ajax({
+                url: url,
+               
+                data: {
+                    "id": obj.id,
+                    "Mange_EntityIDs": obj.Mange_EntityIDs,
+                    "username": obj.username,
+                    "pwd": obj.pwd,
+                    "Imgurl": obj.Imgurl,
+                    "type": obj.type
+
+                }, success: function (data) {
+                    table.ajax.reload();
+                    $("#myModal").modal("hide");
+                    $("#myModalLabel").text("新增");
+                    clear();
+                    console.log("结果" + data);
+                        //重载单位列表
+                }
+            });
+        }
+
+
+        /**
+         * 删除数据
+         * @param ID，name
+         */
+        function del(id, name) {
+            if (!confirm("确定删除" + name + "?")) return;
+
+            $.ajax({
+                url: "/Handle/Service/Del_User.ashx",
+                data: {
+                    "id": id
+                }, success: function (data) {
+
+                    table.ajax.reload();
+                  
+                    console.log("删除成功" + data);
+
+                }
+            });
+        }
+
+        
+
+
+        
+
+
+       // var datatree= [{"id":"4","text":"台州店里","parent":"#"},{"id":"2","text":"路桥供电局","parent":"4"},{"id":"3","text":"温岭供电局","parent":"4"},{"id":"5","text":"我这","parent":"4"}];
+       // createtree(datatree);
+        var datatree = [];
+        
+        $.ajax({
+            type: "POST",
+            url: "Handle/Service/GetEntitys_Jstree.ashx",
+            data: "",
+            dataType: "json",
+            success: function (data) {       
+                datatree = data.result;
+                $("#statictreevalue").text(JSON.stringify(data.result));
+                createtree(datatree);//初始化加载一次树，以便添加
+            },
+            error: function (msg) {
+                alert(msg);
+            }
+        });
+     
+
+        function createtree(datatree) {
+            $('#jstree_demo_div').data('jstree', false).empty();
+                    $('#jstree_demo_div').jstree({
+                        'core': {
+                            'data': datatree
+                        }
+                        ,
+                        "checkbox": {
+                            "keep_selected_style": false
+                        },
+                        "plugins": ['checkbox']
+                    } );
+            
+
+            }
+
+        $("#file-2").fileinput({
+            uploadUrl: 'Handle/Service/Uploadfile.ashx', // 
+            language: 'zh',
+            allowedFileExtensions: ['jpg', 'png', 'gif'],
+            overwriteInitial: false,
+            maxFileSize: 1000,
+            maxFilesNum: 1,
+            //allowedFileTypes: ['image', 'video', 'flash'],
+            slugCallback: function (filename) {
+                //alert(1);
+                return filename.replace('(', '_').replace(']', '_');
+            },
+
+            done: function (e, data) {//设置文件上传完毕事件的回调函数  
+                //$.each(data.result.files, function (index, file) {  
+           // $("#myimg").attr({src:data.result.imgurl});  
+           // $("#myimg").css({width:"290px",height:"218px"});  
+                alert(data.result);  
+        },  
+        }).on("fileuploaded", function (event, data) {
+            if (data.response) {
+              
+                $("#imgurl").text(data.response.imgurl);
+            }
+        });
+
+        
+    </script>
+
+
+
+</body>
+
+</html>
