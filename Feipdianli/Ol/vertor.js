@@ -1,7 +1,7 @@
 ﻿var vectordata = new ol.source.Vector({
     features: [] //add an array of features
 });
-var offset = { x: 0.006641, y: 0.160775 }; //28.6699850000,121.5158010000---28.50921,121.50916
+var offset = { x: 0, y: 0 }; //28.6699850000,121.5158010000---28.50921,121.50916
 
 
 var vectordataqt = new ol.source.Vector({
@@ -59,7 +59,7 @@ map.addLayer(
 
 function loadmarks() {
 
-    var bounds = ol.proj.transformExtent(map.getView().calculateExtent(map.getSize()), 'EPSG:3857', 'EPSG:4326').toString();
+    var bounds = map.getView().calculateExtent(map.getSize()).toString(); //ol.proj.transformExtent(map.getView().calculateExtent(map.getSize()), 'EPSG:3857', 'EPSG:4326').toString();
     var boundsarr = bounds.split(",");
     var llo= parseFloat(boundsarr[0]) + offset.x;
     var lla = parseFloat(boundsarr[1]) + offset.y;
@@ -194,7 +194,7 @@ function addmarks(points) {
         var point = points[i];
         if (point.longitude < 90) { continue;}
         var iconFeature = new ol.Feature({
-            geometry: new ol.geom.Point(ol.proj.transform([parseFloat(point.longitude - offset.x), parseFloat(point.latitude - offset.y)], 'EPSG:4326', 'EPSG:3857')),
+            geometry: new ol.geom.Point([parseFloat(point.longitude ), parseFloat(point.latitude)]),
             c_name: point.c_name,
             c_index_code: point.c_index_code,
             i_status: point.i_status
