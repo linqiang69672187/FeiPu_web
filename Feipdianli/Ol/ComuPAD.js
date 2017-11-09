@@ -7,7 +7,7 @@ function notify(c_index_code) {
 }
 
 function updateGPS(lo, la) {
-    position_overlay.setPosition(ol.proj.transform([parseFloat(lo) - offset.x, parseFloat(la) - offset.y], 'EPSG:4326', 'EPSG:3857'));
+    position_overlay.setPosition([parseFloat(lo), parseFloat(la)]);
 }
 
 /**

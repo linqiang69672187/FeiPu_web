@@ -1,0 +1,98 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <title>OpenLayers MapQuest Demo</title>
+    <link rel="stylesheet" type="text/css" href="css/ol.css" />
+    <style type="text/css">
+        html, body, #map {
+            padding: 0;
+            margin: 0;
+            height: 100%;
+            width: 100%;
+        }
+
+        .mouse-position-wrapper {
+            width: 300px;
+            height: 29px;
+            color: #FF00FF;
+            position: absolute;
+            right: 20px;
+            bottom: 6px;
+            z-index: 999;
+        }
+
+        .ol-rotate {
+            right: 40px;
+        }
+
+        .ol-scale-line {
+            left: 180px;
+        }
+
+        .ol-zoomslider {
+            top: 120px;
+            left: 9px;
+        }
+    </style>
+    <script src="build/ol-debug.js"></script>
+    <script type="text/javascript">
+        function zeroPad(num, len, radix) {
+            var str = num.toString(radix || 10);
+            while (str.length < len) {
+                str = "0" + str;
+            }
+            return str;
+        }
+        var tileLayer = new ol.layer.Tile({
+            tileSize: 256,
+            source: new ol.source.XYZ({
+                tileUrlFunction: function (tileCoord) {
+                    var x = 'C' + zeroPad(tileCoord[1], 8, 16);
+                    var y = 'R' + zeroPad(-tileCoord[2] - 1, 8, 16);
+                    var z = 'L' + zeroPad(tileCoord[0], 2, 10);
+                    return '/TMS/' + z + '/' + y + '/' + x + '.jpg';
+                },
+                projection: 'EPSG:4326'
+            })
+        });
+
+    window.onload = function () {  
+        var map = new ol.Map({  
+            target: 'map',  
+            layers: [  
+             
+               tileLayer
+            ],
+            controls: ol.control.defaults().extend([
+			new ol.control.FullScreen(),
+			new ol.control.OverviewMap(),
+			new ol.control.ScaleLine(),
+			new ol.control.MousePosition({
+			    coordinateFormat: ol.coordinate.createStringXY(6),
+			    projection: ol.proj.get('EPSG:4326'),
+			    className: 'custom-mouse-position',
+			    target: document.getElementById('mouse-position')
+			}),
+            ]),
+            view: new ol.View({  
+                center: [121.41071, 28.37096],
+                zoom: 10,  
+                minZoom:1,  
+                maxZoom: 20,  
+                projection: 'EPSG:4326'
+            })  
+        });  
+    }  
+    </script>  
+
+    </script>
+</head>
+<body >
+    <p id="map"></p>
+    <p id="mouse-position" class="mouse-position-wrapper">
+    <p class="custom-mouse-position"></p>
+    </p>
+</body>
