@@ -111,7 +111,7 @@ var map = new ol.Map({
         // 设置地图中心
         center: ol.proj.transform([121.41071, 28.37096], 'EPSG:4326', 'EPSG:3857'),
         zoom: 12,
-        maxZoom: 17,
+        maxZoom: 18,
         minZoom: 10,
         projection: 'EPSG:3857'
     }),
