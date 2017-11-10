@@ -55,7 +55,7 @@
                     var z = 'L' + zeroPad(tileCoord[0], 2, 10);
                     return '/TMS/' + z + '/' + y + '/' + x + '.jpg';
                 },
-                projection: 'EPSG:4326'
+                projection: 'EPSG:3857'
             })
         });
 
@@ -78,11 +78,11 @@
 			}),
             ]),
             view: new ol.View({  
-                center: [121.41071, 28.37096],
+                center: ol.proj.transform([121.41071, 28.37096], 'EPSG:4326', 'EPSG:3857'),
                 zoom: 10,  
                 minZoom:1,  
                 maxZoom: 20,  
-                projection: 'EPSG:4326'
+                projection: 'EPSG:3857'
             })  
         });  
     }  

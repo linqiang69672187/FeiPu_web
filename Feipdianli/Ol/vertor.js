@@ -49,29 +49,29 @@ map.addOverlay(position_overlay);
 
 map.addLayer(
     new ol.layer.Group({
-    title: '非普电力',
-    layers: [
-       vectorSourcedby,
-       vectorSourceqt
-    ]
+        title: '非普电力',
+        layers: [
+           vectorSourcedby,
+           vectorSourceqt
+        ]
     }));
 
 
 function loadmarks() {
 
-    var bounds = map.getView().calculateExtent(map.getSize()).toString(); //ol.proj.transformExtent(map.getView().calculateExtent(map.getSize()), 'EPSG:3857', 'EPSG:4326').toString();
+    var bounds = ol.proj.transformExtent(map.getView().calculateExtent(map.getSize()), 'EPSG:3857', 'EPSG:4326').toString();
     var boundsarr = bounds.split(",");
-    var llo= parseFloat(boundsarr[0]) + offset.x;
+    var llo = parseFloat(boundsarr[0]) + offset.x;
     var lla = parseFloat(boundsarr[1]) + offset.y;
     var rlo = parseFloat(boundsarr[2]) + offset.x;
-    var rla = parseFloat(boundsarr[3]) +offset.y;
+    var rla = parseFloat(boundsarr[3]) + offset.y;
     bounds = llo + "," + lla + "," + rlo + "," + rla;
-   
-  
+
+
     var data =
         {
-          
-            bounds:bounds
+
+            bounds: bounds
 
         }
 
@@ -85,8 +85,8 @@ function loadmarks() {
                 if (data.result == "0") {
                     vectorSourcedby.getSource().clear();//单兵
                     vectorSourceqt.getSource().clear();//摄像仪
-                    
-          
+
+
                 }
                 else {
                     addmarks(data.result);
@@ -95,9 +95,9 @@ function loadmarks() {
             } else {
                 vectorSourcedby.getSource().clear();
                 vectorSourceqt.getSource().clear();
-              
+
             }
-            
+
 
         },
         error: function (msg) {
@@ -110,11 +110,11 @@ function loadmarks() {
 
 
 
-function ResteLastFeature(feature){
+function ResteLastFeature(feature) {
     var type = feature.get("c_name").substring(feature.get("c_name").length - 3);
     switch (type) {
         case "单兵仪":
-           
+
             if (feature.get("i_status") == "0") { feature.setStyle(markicon.danbingoffline); }
             else {
                 feature.setStyle(markicon.danbingonline);
@@ -140,7 +140,7 @@ map.on('click', function (evt) {
             return feature;
         });
     if (feature) {
-        var coordinates = feature.getGeometry().getCoordinates();     
+        var coordinates = feature.getGeometry().getCoordinates();
         point_overlay.setPosition(coordinates);
         setTimeout(function () { point_overlay.setPosition([0, 0]) }, 30000);//三秒后关闭
         switch (feature.get("c_name").substring(feature.get("c_name").length - 3)) {
@@ -152,7 +152,7 @@ map.on('click', function (evt) {
                 feature.setStyle(markicon.sel);
                 break;
         }
-       
+
 
         values.last_c_index_code = values.select_c_index_code;
 
@@ -166,7 +166,7 @@ map.on('click', function (evt) {
         }
         values.select_c_index_code = feature.get('c_index_code');
         notify(values.select_c_index_code);
-    } 
+    }
 });
 
 // change mouse cursor when over marker
@@ -192,52 +192,51 @@ function addmarks(points) {
 
     for (var i = 0; i < points.length; i++) {
         var point = points[i];
-        if (point.longitude < 90) { continue;}
+        if (point.longitude < 90) { continue; }
         var iconFeature = new ol.Feature({
-            geometry: new ol.geom.Point([parseFloat(point.longitude ), parseFloat(point.latitude)]),
+            geometry: new ol.geom.Point(ol.proj.transform([parseFloat(point.longitude), parseFloat(point.latitude)], 'EPSG:4326', 'EPSG:3857')),
             c_name: point.c_name,
             c_index_code: point.c_index_code,
             i_status: point.i_status
         });
-      
+
         var type = point.c_name.substring(point.c_name.length - 3);
-        
+
         Seticon(type, point.i_status, point.c_index_code, iconFeature);
         iconFeature.setId(point.c_index_code);
         iconFeature.on()
 
         switch (point.c_name.substring(point.c_name.length - 3)) {
-           
 
-                case "单兵仪":
-                    vectorSourcedby.getSource().addFeature(iconFeature);
-                    break;
-        
-                default:
-                   vectorSourceqt.getSource().addFeature(iconFeature);
-                  break;
-            }
+
+            case "单兵仪":
+                vectorSourcedby.getSource().addFeature(iconFeature);
+                break;
+
+            default:
+                vectorSourceqt.getSource().addFeature(iconFeature);
+                break;
+        }
 
         //updateGPS(point.longitude, point.latitude);
-      //  point_overlay.setPosition(ol.proj.transform([parseFloat(point.La), parseFloat(point.Lo)], 'EPSG:4326', 'EPSG:3857'));
+        //  point_overlay.setPosition(ol.proj.transform([parseFloat(point.La), parseFloat(point.Lo)], 'EPSG:4326', 'EPSG:3857'));
     }
 
 }
 
 function Seticon(type, i_status, c_index_code, feature) {
-    
-    switch (type )
-    {
+
+    switch (type) {
         case "单兵仪":
             if (values.select_c_index_code == c_index_code) {
                 feature.setStyle(markicon.danbingsel);
                 return;
             }
             if (i_status == "0") { feature.setStyle(markicon.danbingoffline); }
-             else{
+            else {
                 feature.setStyle(markicon.danbingonline);
             }
-           
+
             break;
         default:
             if (values.select_c_index_code == c_index_code) {
@@ -250,15 +249,15 @@ function Seticon(type, i_status, c_index_code, feature) {
             }
             break;
     }
-   
+
 }
 
 
 var view = map.getView();
 
 view.on('change:resolution', function (e) {
- //   loadmarks();
+    //   loadmarks();
 });
 view.on('change:center', function (e) {
-//    loadmarks();
+    //    loadmarks();
 });

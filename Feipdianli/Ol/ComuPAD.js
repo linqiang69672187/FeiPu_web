@@ -7,7 +7,7 @@ function notify(c_index_code) {
 }
 
 function updateGPS(lo, la) {
-    position_overlay.setPosition([parseFloat(lo), parseFloat(la)]);
+    position_overlay.setPosition(ol.proj.transform([parseFloat(lo) - offset.x, parseFloat(la) - offset.y], 'EPSG:4326', 'EPSG:3857'));
 }
 
 /**
@@ -46,7 +46,7 @@ function loacalByDevice(c_index_code) {
 }
 
 function loacalByLola(lo, la) {
-    var coordinates = ol.proj.transform([parseFloat(point.lo) - offset.x, parseFloat(point.la) - offset.y], 'EPSG:4326', 'EPSG:3857')
+    var coordinates = ol.proj.transform([parseFloat(point.lo), parseFloat(point.la)], 'EPSG:4326', 'EPSG:3857')
     point_overlay.setPosition(coordinates);
     var view = map.getView();
     view.animate({ zoom: view.getZoom() }, { center: coordinates }, function () {

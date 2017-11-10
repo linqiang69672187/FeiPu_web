@@ -92,7 +92,7 @@ var tileLayer = new ol.layer.Tile({
             var z = 'L' + zeroPad(tileCoord[0], 2, 10);
             return '/TMS/' + z + '/' + y + '/' + x + '.jpg';
         },
-        projection: 'EPSG:4326'
+        projection: 'EPSG:3857'
     })
 });
 
@@ -109,11 +109,11 @@ var map = new ol.Map({
     }).extend(controls),
     view: new ol.View({
         // 设置地图中心
-        center: [121.41071, 28.37096],
+        center: ol.proj.transform([121.41071, 28.37096], 'EPSG:4326', 'EPSG:3857'),
         zoom: 12,
         maxZoom: 17,
         minZoom: 10,
-        projection: 'EPSG:4326'
+        projection: 'EPSG:3857'
     }),
     target: document.getElementById('mapdraw')
 });
