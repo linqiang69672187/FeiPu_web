@@ -170,6 +170,7 @@
     <Content Include="build\examples\browserify\package.json" />
     <Content Include="build\examples\browserify\README.md" />
     <Content Include="ArcTilerKml.kml" />
+    <Content Include="Ol\ArcTilerKml.kml" />
     <None Include="Properties\PublishProfiles\FEIPU.pubxml" />
     <None Include="Service References\Getresouce\VmsSdkWebService.wsdl" />
     <Content Include="index.html" />

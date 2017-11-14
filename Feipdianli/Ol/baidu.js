@@ -113,8 +113,8 @@ var interactions = ol.interaction.defaults({ altShiftDragRotate: false, pinchRot
 var map = new ol.Map({
     layers: [ new ol.layer.Group({
         'title': '基础图层',
-        layers: [tileLayer]
-    }), vectorLayerbound
+        layers: [vectorLayerbound,tileLayer ]
+    }) 
     ],
     interactions: interactions,
     controls: ol.control.defaults({
