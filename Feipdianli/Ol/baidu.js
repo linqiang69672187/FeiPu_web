@@ -76,6 +76,18 @@ var baiduMapLayer2 = new ol.layer.Tile({
     visible: true,
 });
 
+var vectorSourcebound = new ol.source.Vector({
+    
+    url: 'ArcTilerKml.kml',
+    format: new ol.format.KML()
+});
+var vectorLayerbound = new ol.layer.Vector({
+    source: vectorSourcebound,
+    projection: 'EPSG:3857',
+    type: 'base',
+    visible: true,
+});
+
 function zeroPad(num, len, radix) {
     var str = num.toString(radix || 10);
     while (str.length < len) {
@@ -102,7 +114,7 @@ var map = new ol.Map({
     layers: [ new ol.layer.Group({
         'title': '基础图层',
         layers: [tileLayer]
-      })
+    }), vectorLayerbound
     ],
     interactions: interactions,
     controls: ol.control.defaults({
@@ -114,7 +126,7 @@ var map = new ol.Map({
         center: ol.proj.transform([121.41071, 28.37096], 'EPSG:4326', 'EPSG:3857'),
         zoom: 12,
         maxZoom: 18,
-        minZoom: 10,
+        minZoom: 1,
         projection: 'EPSG:3857'
     }),
     target: document.getElementById('mapdraw')
