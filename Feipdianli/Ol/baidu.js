@@ -96,7 +96,7 @@ var tileLayer = new ol.layer.Tile({
     })
 });
 
-
+var interactions = ol.interaction.defaults({ altShiftDragRotate: false, pinchRotate: false }); //禁用旋转
 // 创建地图
 var map = new ol.Map({
     layers: [ new ol.layer.Group({
@@ -104,8 +104,10 @@ var map = new ol.Map({
         layers: [tileLayer]
       })
     ],
+    interactions: interactions,
     controls: ol.control.defaults({
-        attribution: false
+        attribution: false,
+        rotate: false
     }).extend(controls),
     view: new ol.View({
         // 设置地图中心
