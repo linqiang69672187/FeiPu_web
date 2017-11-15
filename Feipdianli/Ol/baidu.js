@@ -76,9 +76,24 @@ var baiduMapLayer2 = new ol.layer.Tile({
     visible: true,
 });
 
-var vectorSourcebound = new ol.source.Vector({
+var linhai = new ol.source.Vector({
     
-    url: 'ArcTilerKml.xml',
+    url: 'linhai.xml',
+    format: new ol.format.KML({
+        extractStyles: false
+    })
+});
+
+var wenlin = new ol.source.Vector({
+
+    url: 'wenlin.xml',
+    format: new ol.format.KML({
+        extractStyles: false
+    })
+});
+var jiaojiang = new ol.source.Vector({
+
+    url: 'jiaojiang.xml',
     format: new ol.format.KML({
         extractStyles: false
     })
@@ -86,7 +101,7 @@ var vectorSourcebound = new ol.source.Vector({
 
 var style = new ol.style.Style({
     fill: new ol.style.Fill({ //矢量图层填充颜色，以及透明度
-        color: 'rgba(255, 255, 255, 0)'
+        color: 'rgba(255, 255, 255, 0.3)'
     }),
     stroke: new ol.style.Stroke({ //边界样式
         color: '#FFFFFF',
@@ -104,13 +119,30 @@ var style = new ol.style.Style({
     })
 });
 
-var vectorLayerbound = new ol.layer.Vector({
-    source: vectorSourcebound,
+var linhaiLayerbound = new ol.layer.Vector({
+    source: linhai,
     projection: 'EPSG:3857',
     type: 'base',
     visible: true,
     style: style
 });
+
+var wenlinLayerbound = new ol.layer.Vector({
+    source: wenlin,
+    projection: 'EPSG:3857',
+    type: 'base',
+    visible: true,
+    style: style
+});
+var jiaojiangLayerbound = new ol.layer.Vector({
+    source: jiaojiang,
+    projection: 'EPSG:3857',
+    type: 'base',
+    visible: true,
+    maxResolution:256,
+    style: style
+});
+
 
 function zeroPad(num, len, radix) {
     var str = num.toString(radix || 10);
@@ -137,7 +169,7 @@ var interactions = ol.interaction.defaults({ altShiftDragRotate: false, pinchRot
 var map = new ol.Map({
     layers: [ new ol.layer.Group({
         'title': '基础图层',
-        layers: [tileLayer, vectorLayerbound]
+        layers: [tileLayer, linhaiLayerbound, wenlinLayerbound,jiaojiangLayerbound]
     }) 
     ],
     interactions: interactions,
@@ -162,7 +194,7 @@ var map = new ol.Map({
 
 $(function () {
    // setboxsize();
-    setInterval("loadmarks()", 15000);
+   setInterval("loadmarks()", 15000);
    loadmarks();
    
 });
