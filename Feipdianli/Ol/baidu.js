@@ -78,12 +78,12 @@ var baiduMapLayer2 = new ol.layer.Tile({
 
 var vectorSourcebound = new ol.source.Vector({
     
-    url: 'ArcTilerKml.kml',
+    url: '2.kml',
     format: new ol.format.KML()
 });
 var vectorLayerbound = new ol.layer.Vector({
     source: vectorSourcebound,
-    projection: 'EPSG:3857',
+    projection: 'EPSG:4326',
     type: 'base',
     visible: true,
 });

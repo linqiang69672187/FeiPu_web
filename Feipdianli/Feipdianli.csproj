@@ -169,8 +169,11 @@
     <Content Include="Handle\Service\GetaMarksbyBound.ashx" />
     <Content Include="build\examples\browserify\package.json" />
     <Content Include="build\examples\browserify\README.md" />
-    <Content Include="ArcTilerKml.kml" />
+    <Content Include="ArcTilerKml.kml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Ol\ArcTilerKml.kml" />
+    <Content Include="2.kml" />
     <None Include="Properties\PublishProfiles\FEIPU.pubxml" />
     <None Include="Service References\Getresouce\VmsSdkWebService.wsdl" />
     <Content Include="index.html" />
