@@ -78,14 +78,38 @@ var baiduMapLayer2 = new ol.layer.Tile({
 
 var vectorSourcebound = new ol.source.Vector({
     
-    url: '2.kml',
-    format: new ol.format.KML()
+    url: 'ArcTilerKml.xml',
+    format: new ol.format.KML({
+        extractStyles: false
+    })
 });
+
+var style = new ol.style.Style({
+    fill: new ol.style.Fill({ //矢量图层填充颜色，以及透明度
+        color: 'rgba(255, 255, 255, 0)'
+    }),
+    stroke: new ol.style.Stroke({ //边界样式
+        color: '#FFFFFF',
+        width: 3
+    }),
+    text: new ol.style.Text({ //文本样式
+        font: '12px Calibri,sans-serif',
+        fill: new ol.style.Fill({
+            color: '#000'
+        }),
+        stroke: new ol.style.Stroke({
+            color: '#fff',
+            width: 3
+        })
+    })
+});
+
 var vectorLayerbound = new ol.layer.Vector({
     source: vectorSourcebound,
-    projection: 'EPSG:4326',
+    projection: 'EPSG:3857',
     type: 'base',
     visible: true,
+    style: style
 });
 
 function zeroPad(num, len, radix) {
@@ -113,7 +137,7 @@ var interactions = ol.interaction.defaults({ altShiftDragRotate: false, pinchRot
 var map = new ol.Map({
     layers: [ new ol.layer.Group({
         'title': '基础图层',
-        layers: [vectorLayerbound,tileLayer ]
+        layers: [tileLayer, vectorLayerbound]
     }) 
     ],
     interactions: interactions,
@@ -139,6 +163,6 @@ var map = new ol.Map({
 $(function () {
    // setboxsize();
     setInterval("loadmarks()", 15000);
-    loadmarks();
+   loadmarks();
    
 });

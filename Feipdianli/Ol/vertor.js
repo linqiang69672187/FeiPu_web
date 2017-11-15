@@ -90,7 +90,6 @@ function loadmarks() {
                 }
                 else {
                     addmarks(data.result);
-                    loacalByDevice('001133');
                 }
             } else {
                 vectorSourcedby.getSource().clear();
